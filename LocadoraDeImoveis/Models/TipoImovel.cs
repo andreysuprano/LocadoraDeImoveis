@@ -2,7 +2,7 @@
 
 namespace LocadoraDeImoveis.Models
 {
-    [Table("TiposImovel")]
+    [Table("TipoImovel")]
     class TipoImovel:BaseModel
     {
         private int Comissao { get; set; }

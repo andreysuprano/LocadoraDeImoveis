@@ -1,0 +1,51 @@
+﻿<Window x:Class="LocadoraDeImoveis.Views.frmCorretores"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LocadoraDeImoveis.Views"        
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"        
+        mc:Ignorable="d"
+        Title="Corretores" Background="#282A43"  WindowStartupLocation="CenterScreen" WindowStyle="SingleBorderWindow" MaxHeight="600" MinHeight="600" MaxWidth="900" MinWidth="900">
+    <Grid Background="#FF282A43" MaxHeight="600" MinHeight="600" MaxWidth="900" MinWidth="900">
+        <StackPanel Panel.ZIndex="999">
+            <TextBox Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" AcceptsReturn="True" TextWrapping="Wrap" Panel.ZIndex="999"
+                 materialDesign:HintAssist.Hint="Insira o Nome: " IsEnabled="{Binding IsChecked, ElementName=MaterialDesignFilledTextFieldTextBoxEnabledComboBox}" Width="452" Height="45" Margin="150,6,0,0" Padding="0,-15,-10,-55" FontSize="14" FontFamily="Roboto" BorderBrush="#89020202" />
+        </StackPanel>
+        <Button Style="{StaticResource MaterialDesignRaisedButton}" ToolTip="Resource name: MaterialDesignRaisedButton" Margin="754,6,34,549" Padding="16,2,16,4" Background="#FF16C787" BorderBrush="#0000FFA3" Panel.ZIndex="999" Height="45">BUSCAR</Button>
+        <ToolBarTray Margin="0,0,0,544">
+            <ToolBar Style="{DynamicResource MaterialDesignToolBar}" ClipToBounds="False">
+                <Button ToolTip="Voltar" x:Name="ToolVoltar" Click="ToolVoltar_Click">
+                    <materialDesign:PackIcon Kind="ArrowBack" />
+                </Button>
+                <Separator />
+                <Button ToolTip="Novo Corretor" x:Name="ToolNovo" Click="ToolNovo_Click">
+                    <materialDesign:PackIcon Kind="Add" />
+                </Button>
+                <Separator />
+                <Button ToolTip="Save">
+                    <materialDesign:PackIcon Kind="Pencil" />
+                </Button>
+                <Separator />
+                <Button ToolTip="Save">
+                    <materialDesign:PackIcon Kind="Trash" />
+                </Button>
+                <Separator />
+            </ToolBar>
+        </ToolBarTray>
+
+        <DataGrid Margin="22,86,34,64" ItemsSource="{Binding Items3}" CanUserSortColumns="True" CanUserAddRows="False" >
+            <DataGrid.Columns>
+                <materialDesign:DataGridTextColumn Header="ID" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
+                <materialDesign:DataGridTextColumn Header="Nome" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
+                <materialDesign:DataGridTextColumn Header="CPF" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
+                <materialDesign:DataGridTextColumn Header="Email" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
+                <materialDesign:DataGridTextColumn Header="Telefone" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
+                <materialDesign:DataGridTextColumn Header="COEFI" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
+                <materialDesign:DataGridTextColumn Header="Cidade" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
+                <materialDesign:DataGridTextColumn Header="UF" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
+                <materialDesign:DataGridTextColumn Header="Renda/Comissão" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

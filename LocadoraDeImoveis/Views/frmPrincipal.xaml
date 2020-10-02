@@ -3,11 +3,61 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:LocadoraDeImoveis.Views"
+        xmlns:local="clr-namespace:LocadoraDeImoveis.Views" 
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="frmPrincipal" Height="450" Width="800">
-    <Grid Margin="0,0,0,374">
-        <Menu Margin="0,0,0,10"/>
+        Title="IMob" Closing="Window_Closing" Background="#282A43"  WindowStartupLocation="CenterScreen" WindowStyle="SingleBorderWindow" MaxHeight="600" MinHeight="600" MaxWidth="900" MinWidth="900">
+    <Grid Background="#FF282A43" MaxHeight="600" MinHeight="600" MaxWidth="900" MinWidth="900" >
+        <Menu VerticalAlignment="Top" IsMainMenu="True" MaxHeight="50" MinHeight="50" MaxWidth="900" MinWidth="900" Background="#383B5A" FontWeight="Medium" FontSize="18" Foreground="#00FFA3" Height="50" HorizontalContentAlignment="Center" HorizontalAlignment="Center">
+            <MenuItem Header="_Arquivo">
+                <MenuItem.Icon>
+                    <materialDesign:PackIcon Kind="File"/>
+                </MenuItem.Icon>
+                <MenuItem x:Name="menuSair" Header="_Sair" Click="menuSair_Click">
+                    <MenuItem.Icon>
+                        <materialDesign:PackIcon Kind="ExitToApp" />
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="_Corretores" x:Name="AbrirCorretores" Click="AbrirCorretores_Click">
+                <MenuItem.Icon>
+                    <materialDesign:PackIcon Kind="BriefcaseOutline" />
+                </MenuItem.Icon>                
+            </MenuItem>
+            <MenuItem Header="_Locatários" x:Name="AbrirLocatarios">
+                <MenuItem.Icon>
+                    <materialDesign:PackIcon Kind="AccountKey" />
+                </MenuItem.Icon>                
+            </MenuItem>
+            <MenuItem Header="_Imóveis" x:Name="AbrirImoveis">
+                <MenuItem.Icon>
+                    <materialDesign:PackIcon Kind="Home" />
+                </MenuItem.Icon>                
+            </MenuItem>
+            <MenuItem Header="_Contratos" x:Name="AbrirContratos">
+                <MenuItem.Icon>
+                    <materialDesign:PackIcon Kind="Invoice" />
+                </MenuItem.Icon>               
+            </MenuItem>
+        </Menu>
 
+        <materialDesign:Chip Content="Andrey Suprano" Background="#383B5A" Foreground="#FFF" Margin="169,486,0,82">
+            <materialDesign:Chip.Icon>
+                <Image Source="/Resources/Andrey.jpg" />
+            </materialDesign:Chip.Icon>
+        </materialDesign:Chip>
+        <materialDesign:Chip Content="André Dias" Background="#383B5A" Foreground="#FFF" Margin="0,486,0,82" HorizontalAlignment="Center">
+            <materialDesign:Chip.Icon>
+                <Image Source="/Resources/Andre Dias.png" Height="41" Width="33" />
+            </materialDesign:Chip.Icon>
+        </materialDesign:Chip>
+        <Image HorizontalAlignment="Center" Height="282" VerticalAlignment="Top" Width="282" Source="/Resources/logo.png" Margin="0,101,0,0"/>
+        <materialDesign:Chip Content="Ricardo Hartemink" Background="#383B5A" Foreground="#FFF" Margin="589,486,0,82">
+            <materialDesign:Chip.Icon>
+                <Image Source="/Resources/Dinamarca.jpg" />
+            </materialDesign:Chip.Icon>
+        </materialDesign:Chip>
+        <Label Content="IMob" HorizontalAlignment="Center" Margin="0,390,0,0" VerticalAlignment="Top" FontFamily="Roboto" FontSize="48" FontWeight="Bold" Foreground="#00FFA3"/>
     </Grid>
+
 </Window>
