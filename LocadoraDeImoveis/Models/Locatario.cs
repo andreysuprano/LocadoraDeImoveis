@@ -5,6 +5,6 @@ namespace LocadoraDeImoveis.Models
     [Table("Locatarios")]
     public class Locatario:Pessoa
     {
-        private double RendaDisponivel { get; set; }
+        public double RendaDisponivel { get; set; }
     }
 }

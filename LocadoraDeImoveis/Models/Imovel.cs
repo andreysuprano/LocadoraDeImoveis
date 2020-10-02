@@ -5,14 +5,14 @@ namespace LocadoraDeImoveis.Models
     [Table("Imoveis")]
     public class Imovel:BaseModel
     {
-        private string Descricao { get; set; }
-        private bool Locado { get; set; }
-        private int TipoImovel { get; set; }
-        private string Cidade { get; set; }
-        private string UF { get; set; }
-        private double ValorAluguel { get; set; }
-        private double Area { get; set; }
-        private int Corretor { get; set; }
+        public string Descricao { get; set; }
+        public bool Locado { get; set; }
+        public int TipoImovel { get; set; }
+        public string Cidade { get; set; }
+        public string UF { get; set; }
+        public double ValorAluguel { get; set; }
+        public double Area { get; set; }
+        public int Corretor { get; set; }
 
     }
 }

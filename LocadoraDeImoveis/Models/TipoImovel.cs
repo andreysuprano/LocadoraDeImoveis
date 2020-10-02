@@ -5,7 +5,7 @@ namespace LocadoraDeImoveis.Models
     [Table("TipoImovel")]
     class TipoImovel:BaseModel
     {
-        private int Comissao { get; set; }
-        private string Descricao { get; set; }
+        public int Comissao { get; set; }
+        public string Descricao { get; set; }
     }
 }

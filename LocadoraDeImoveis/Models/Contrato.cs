@@ -6,10 +6,10 @@ namespace LocadoraDeImoveis.Models
     [Table("Contratos")]
     public class Contrato:BaseModel
     {
-        private DateTime DataVencimento { get; set; }
-        private int IdImovel { get; set; }
-        private int IdLocatario { get; set; }
-        private double ValorAluguel { get; set; }
-        private double ComissaoCorretor { get; set; }
+        public DateTime DataVencimento { get; set; }
+        public int IdImovel { get; set; }
+        public int IdLocatario { get; set; }
+        public double ValorAluguel { get; set; }
+        public double ComissaoCorretor { get; set; }
     }
 }

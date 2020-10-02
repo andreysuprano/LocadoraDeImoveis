@@ -6,22 +6,22 @@
         xmlns:local="clr-namespace:LocadoraDeImoveis.Views"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"  
         mc:Ignorable="d"
-        Title="Cadastrar Corretor" Background="#FFF"  WindowStartupLocation="CenterScreen" WindowStyle="SingleBorderWindow" MaxHeight="600" MinHeight="600" MaxWidth="400" MinWidth="400">
-    <Grid >
-        <StackPanel>
-            <PasswordBox Style="{StaticResource MaterialDesignOutlinedPasswordFieldPasswordBox}" IsEnabled="{Binding IsChecked, ElementName=MaterialDesignOutlinedPasswordFieldPasswordBoxEnabledComboBox}" materialDesign:HintAssist.Hint="Nome" Width="360" Margin="0,15,0,0" />
-            <PasswordBox Style="{StaticResource MaterialDesignOutlinedPasswordFieldPasswordBox}" IsEnabled="{Binding IsChecked, ElementName=MaterialDesignOutlinedPasswordFieldPasswordBoxEnabledComboBox}" materialDesign:HintAssist.Hint="CPF" Width="360" Margin="0,15,0,0" />
-            <PasswordBox Style="{StaticResource MaterialDesignOutlinedPasswordFieldPasswordBox}" IsEnabled="{Binding IsChecked, ElementName=MaterialDesignOutlinedPasswordFieldPasswordBoxEnabledComboBox}" materialDesign:HintAssist.Hint="Telefone" Width="360" Margin="0,15,0,0" />
-            <PasswordBox Style="{StaticResource MaterialDesignOutlinedPasswordFieldPasswordBox}" IsEnabled="{Binding IsChecked, ElementName=MaterialDesignOutlinedPasswordFieldPasswordBoxEnabledComboBox}" materialDesign:HintAssist.Hint="Email" Width="360" Margin="0,15,0,0" />
-            <PasswordBox Style="{StaticResource MaterialDesignOutlinedPasswordFieldPasswordBox}" IsEnabled="{Binding IsChecked, ElementName=MaterialDesignOutlinedPasswordFieldPasswordBoxEnabledComboBox}" materialDesign:HintAssist.Hint="COEFI" Width="360" Margin="0,15,0,0" />
-            <PasswordBox Style="{StaticResource MaterialDesignOutlinedPasswordFieldPasswordBox}" IsEnabled="{Binding IsChecked, ElementName=MaterialDesignOutlinedPasswordFieldPasswordBoxEnabledComboBox}" materialDesign:HintAssist.Hint="CEP" Width="360" Margin="0,15,0,0" />
-            <PasswordBox Style="{StaticResource MaterialDesignOutlinedPasswordFieldPasswordBox}" IsEnabled="{Binding IsChecked, ElementName=MaterialDesignOutlinedPasswordFieldPasswordBoxEnabledComboBox}" materialDesign:HintAssist.Hint="Cidade" Width="360" Margin="0,15,0,0" />
-            <PasswordBox Style="{StaticResource MaterialDesignOutlinedPasswordFieldPasswordBox}" IsEnabled="{Binding IsChecked, ElementName=MaterialDesignOutlinedPasswordFieldPasswordBoxEnabledComboBox}" materialDesign:HintAssist.Hint="UF" Width="360" Margin="0,15,0,0" />
+        Title="Cadastrar Corretor" Background="#FFF"  WindowStartupLocation="CenterScreen" WindowStyle="SingleBorderWindow" MaxHeight="500" MinHeight="500" MaxWidth="400" MinWidth="400" Height="494">
+    <Grid MaxHeight="500" MinHeight="500" MaxWidth="400" MinWidth="400" Panel.ZIndex="0">
+        <StackPanel >
+            <TextBox x:Name="txtNome" Style="{StaticResource MaterialDesignTextBox}" IsEnabled="{Binding IsChecked, ElementName=MaterialDesignOutlinedPasswordFieldPasswordBoxEnabledComboBox}" materialDesign:HintAssist.Hint="Nome" Width="360" Margin="0,15,0,0" Cursor="IBeam" />
+            <TextBox x:Name="txtCPF" Style="{StaticResource MaterialDesignTextBox}" IsEnabled="{Binding IsChecked, ElementName=MaterialDesignOutlinedPasswordFieldPasswordBoxEnabledComboBox}" materialDesign:HintAssist.Hint="CPF" Width="360" Margin="0,15,0,0" />
+            <TextBox x:Name="txtTelefone" Style="{StaticResource MaterialDesignTextBox}" IsEnabled="{Binding IsChecked, ElementName=MaterialDesignOutlinedPasswordFieldPasswordBoxEnabledComboBox}" materialDesign:HintAssist.Hint="Telefone" Width="360" Margin="0,15,0,0" />
+            <TextBox x:Name="txtEmail" Style="{StaticResource MaterialDesignTextBox}" IsEnabled="{Binding IsChecked, ElementName=MaterialDesignOutlinedPasswordFieldPasswordBoxEnabledComboBox}" materialDesign:HintAssist.Hint="Email" Width="360" Margin="0,15,0,0" />
+            <TextBox x:Name="txtCOEFI" Style="{StaticResource MaterialDesignTextBox}" IsEnabled="{Binding IsChecked, ElementName=MaterialDesignOutlinedPasswordFieldPasswordBoxEnabledComboBox}" materialDesign:HintAssist.Hint="COEFI" Width="360" Margin="0,15,0,0" />
+            <TextBox x:Name="txtCEP" Style="{StaticResource MaterialDesignTextBox}" IsEnabled="{Binding IsChecked, ElementName=MaterialDesignOutlinedPasswordFieldPasswordBoxEnabledComboBox}" materialDesign:HintAssist.Hint="CEP" Width="360" Margin="0,15,0,0" />
+            <TextBox x:Name="txtCidade" Style="{StaticResource MaterialDesignTextBox}" IsEnabled="{Binding IsChecked, ElementName=MaterialDesignOutlinedPasswordFieldPasswordBoxEnabledComboBox}" materialDesign:HintAssist.Hint="Cidade" Width="360" Margin="0,15,0,0" />
+            <TextBox x:Name="txtUF" Style="{StaticResource MaterialDesignTextBox}" IsEnabled="{Binding IsChecked, ElementName=MaterialDesignOutlinedPasswordFieldPasswordBoxEnabledComboBox}" materialDesign:HintAssist.Hint="UF" Width="360" Margin="0,15,0,0" />
         </StackPanel>
-        <Button Style="{StaticResource MaterialDesignRaisedDarkButton}" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" Margin="19,454,18,70" Background="#FF06C781" FontFamily="Roboto" Panel.ZIndex="999" BorderBrush="#0008AC71" Height="40" Width="360">
+        <Button x:Name="BtnSalvar" Style="{StaticResource MaterialDesignRaisedDarkButton}" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"  Background="#FF06C781" FontFamily="Roboto" Panel.ZIndex="9999" BorderBrush="#0008AC71" Height="40" Width="360" Margin="20,356,20,104" Click="BtnSalvar_Click">
             Salvar
         </Button>
-        <Button Style="{StaticResource MaterialDesignRaisedDarkButton}" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" Margin="19,508,18,16" Background="#FFDEDE07" FontFamily="Roboto" Panel.ZIndex="999" BorderBrush="#0008AC71" Height="40" Width="360">
+        <Button x:Name="BtnCancelar" Style="{StaticResource MaterialDesignRaisedDarkButton}" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"  Background="#FFDEDE07" FontFamily="Roboto" Panel.ZIndex="9999" BorderBrush="#0008AC71" Height="40" Width="360" Margin="20,404,20,56" Click="BtnCancelar_Click">
             Cancelar
         </Button>
     </Grid>
