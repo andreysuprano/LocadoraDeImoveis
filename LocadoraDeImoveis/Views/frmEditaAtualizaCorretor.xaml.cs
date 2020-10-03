@@ -34,7 +34,7 @@ namespace LocadoraDeImoveis.Views
             {
                 Corretor = new Corretor()
                 {
-                    Id = CorretorBuscado.Id,
+                    Id = Convert.ToInt32(txtId.Text),
                     Nome = txtNome.Text,
                     Cpf = txtCPF.Text,
                     Telefone = txtTelefone.Text,
@@ -43,7 +43,7 @@ namespace LocadoraDeImoveis.Views
                     Cofeci = txtCOEFI.Text,
                     UF = txtUF.Text
                 };
-
+                
                 if (CorretorDAO.Atualizar(Corretor))
                 {
                     MessageBox.Show("Corretor salvo com sucesso!", "Imob",
@@ -68,6 +68,7 @@ namespace LocadoraDeImoveis.Views
             if (!string.IsNullOrWhiteSpace(txtNome.Text))
             {
                 CorretorBuscado = CorretorDAO.BuscarPorNome(txtNome.Text);
+                txtId.Text = CorretorBuscado.Id.ToString();
                 txtNome.Text = CorretorBuscado.Nome;
                 txtEmail.Text = CorretorBuscado.Email;
                 txtTelefone.Text = CorretorBuscado.Telefone;
@@ -109,7 +110,7 @@ namespace LocadoraDeImoveis.Views
                     Cofeci = txtCOEFI.Text,
                     UF = txtUF.Text
                 };
-
+                
                 if (CorretorDAO.Remover(Corretor))
                 {
                     MessageBox.Show("Corretor excluído com sucesso!", "Imob",

@@ -3,7 +3,7 @@
 namespace LocadoraDeImoveis.Models
 {
     [Table("Locatarios")]
-    public class Locatario:Pessoa
+    class Locatario:Pessoa
     {
         public double RendaDisponivel { get; set; }
     }

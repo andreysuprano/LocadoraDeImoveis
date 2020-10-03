@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace LocadoraDeImoveis.Models
 {
     [Table("Contratos")]
-    public class Contrato:BaseModel
+    class Contrato:BaseModel
     {
         public DateTime DataVencimento { get; set; }
         public int IdImovel { get; set; }

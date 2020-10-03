@@ -10,6 +10,9 @@ namespace LocadoraDeImoveis.DAL
         public static Corretor BuscarPorNome(string nome) =>
             _context.Corretores.FirstOrDefault(x => x.Nome == nome);
 
+        public static Corretor BuscarPorId(int id) =>
+            _context.Corretores.Find(id);
+
         public static bool Cadastrar(Corretor corretor)
         {
             if (BuscarPorNome(corretor.Nome) == null)
@@ -22,9 +25,9 @@ namespace LocadoraDeImoveis.DAL
         }
 
         public static bool Atualizar(Corretor corretor)
-        {
-            if (BuscarPorNome(corretor.Nome) != null)
-            {
+        {            
+            if (BuscarPorId(corretor.Id) != null)
+            {   
                 _context.Corretores.Update(corretor);
                 _context.SaveChanges();
                 return true;
@@ -32,8 +35,9 @@ namespace LocadoraDeImoveis.DAL
             return false;
         }
         public static bool Remover(Corretor corretor)
-        {            
-            var c = _context.Corretores.Remove(corretor);
+        {
+            var Corretor = BuscarPorId(corretor.Id);
+            var c = _context.Corretores.Remove(Corretor);
             _context.SaveChanges();
 
             if (c == null)

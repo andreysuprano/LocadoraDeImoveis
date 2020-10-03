@@ -95,20 +95,27 @@ namespace LocadoraDeImoveis.Views
             }
             else
             {
-                MessageBox.Show("Deseja realmente sair?", "Vendas WPF", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                MessageBox.Show("Campo de busca está em branco", "Imob", MessageBoxButton.OK, MessageBoxImage.Question);
             }
         }
 
         private void Button_Editar_Click(object sender, RoutedEventArgs e)
-        {
+        {            
             frmEditaAtualizaCorretor frm = new frmEditaAtualizaCorretor();
-            frm.ShowDialog();
+            frm.ShowDialog();            
         }
 
         private void Button_Apagar_Click(object sender, RoutedEventArgs e)
         {
             frmEditaAtualizaCorretor frm = new frmEditaAtualizaCorretor();
             frm.ShowDialog();
+        }
+
+        private void Refresh_Click(object sender, RoutedEventArgs e)
+        {
+            itens.Clear();
+            PopularDataGridInicial();
+            dtaCorretores.Items.Refresh();
         }
     }
 }

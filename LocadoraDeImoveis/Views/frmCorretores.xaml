@@ -46,5 +46,8 @@
                 <materialDesign:DataGridTextColumn Header="UF" Binding="{Binding UF}" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
             </DataGrid.Columns>
         </DataGrid>
+        <Button x:Name="Refresh" Style="{StaticResource MaterialDesignFloatingActionButton}" ToolTip="Atualiza tabela" Panel.ZIndex="999" Margin="823,493,21,51" Click="Refresh_Click" >
+            <materialDesign:PackIcon Kind="Refresh" Height="24"  Width="24" />
+        </Button>
     </Grid>
 </Window>

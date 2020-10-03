@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="Editar/Excluir" Background="#FFF"  WindowStartupLocation="CenterScreen" WindowStyle="SingleBorderWindow" MaxHeight="500" MinHeight="500" MaxWidth="400" MinWidth="400" Height="494">
     <Grid MaxHeight="500" MinHeight="500" MaxWidth="400" MinWidth="400" Panel.ZIndex="0">
-        <StackPanel >
+        <StackPanel >            
             <TextBox x:Name="txtNome" Style="{StaticResource MaterialDesignTextBox}" IsEnabled="{Binding IsChecked, ElementName=MaterialDesignOutlinedPasswordFieldPasswordBoxEnabledComboBox}" materialDesign:HintAssist.Hint="Nome" Width="314" Margin="0,25,47,0" Cursor="IBeam" />
             <TextBox x:Name="txtCPF" Style="{StaticResource MaterialDesignTextBox}" IsEnabled="{Binding IsChecked, ElementName=MaterialDesignOutlinedPasswordFieldPasswordBoxEnabledComboBox}" materialDesign:HintAssist.Hint="CPF" Width="360" Margin="0,15,0,0" />
             <TextBox x:Name="txtTelefone" Style="{StaticResource MaterialDesignTextBox}" IsEnabled="{Binding IsChecked, ElementName=MaterialDesignOutlinedPasswordFieldPasswordBoxEnabledComboBox}" materialDesign:HintAssist.Hint="Telefone" Width="360" Margin="0,15,0,0" />
@@ -29,6 +29,6 @@
         <Button x:Name="BtnCancelar" Style="{StaticResource MaterialDesignRaisedDarkButton}" ToolTip="Resource name: Cancelar"  Background="#FFDEDE07" FontFamily="Roboto" Panel.ZIndex="9999" BorderBrush="#0008AC71" Height="40" Width="360" Margin="20,404,20,56" Click="BtnCancelar_Click">
             Cancelar
         </Button>
-        
+        <TextBox x:Name="txtId" Panel.ZIndex="0" Visibility="Hidden"/>
     </Grid>
 </Window>

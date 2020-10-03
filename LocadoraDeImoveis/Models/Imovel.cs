@@ -3,7 +3,7 @@
 namespace LocadoraDeImoveis.Models
 {
     [Table("Imoveis")]
-    public class Imovel:BaseModel
+    class Imovel:BaseModel
     {
         public string Descricao { get; set; }
         public bool Locado { get; set; }
