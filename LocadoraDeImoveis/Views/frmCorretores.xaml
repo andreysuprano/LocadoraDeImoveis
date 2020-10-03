@@ -9,10 +9,10 @@
         Title="Corretores" Background="#282A43"  WindowStartupLocation="CenterScreen" WindowStyle="SingleBorderWindow" MaxHeight="600" MinHeight="600" MaxWidth="900" MinWidth="900">
     <Grid Background="#FF282A43" MaxHeight="600" MinHeight="600" MaxWidth="900" MinWidth="900">
         <StackPanel Panel.ZIndex="999">
-            <TextBox Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" AcceptsReturn="True" TextWrapping="Wrap" Panel.ZIndex="999"
+            <TextBox DragEnter="EnterBusca" x:Name="txtBuscaPorNome" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" AcceptsReturn="True" TextWrapping="Wrap" Panel.ZIndex="999"
                  materialDesign:HintAssist.Hint="Insira o Nome: " IsEnabled="{Binding IsChecked, ElementName=MaterialDesignFilledTextFieldTextBoxEnabledComboBox}" Width="452" Height="45" Margin="150,6,0,0" Padding="0,-15,-10,-55" FontSize="14" FontFamily="Roboto" BorderBrush="#89020202" />
         </StackPanel>
-        <Button Style="{StaticResource MaterialDesignRaisedButton}" ToolTip="Resource name: MaterialDesignRaisedButton" Margin="754,6,34,549" Padding="16,2,16,4" Background="#FF16C787" BorderBrush="#0000FFA3" Panel.ZIndex="999" Height="45">BUSCAR</Button>
+        <Button x:Name="BtnBuscar" Style="{StaticResource MaterialDesignRaisedButton}" ToolTip="Resource name: MaterialDesignRaisedButton" Margin="754,6,34,549" Padding="16,2,16,4" Background="#FF16C787" BorderBrush="#0000FFA3" Panel.ZIndex="999" Height="45" Click="BtnBuscar_Click">BUSCAR</Button>
         <ToolBarTray Margin="0,0,0,544">
             <ToolBar Style="{DynamicResource MaterialDesignToolBar}" ClipToBounds="False">
                 <Button ToolTip="Voltar" x:Name="ToolVoltar" Click="ToolVoltar_Click">
@@ -23,28 +23,27 @@
                     <materialDesign:PackIcon Kind="Add" />
                 </Button>
                 <Separator />
-                <Button ToolTip="Save">
+                <Button ToolTip="Editar" Click="Button_Editar_Click">
                     <materialDesign:PackIcon Kind="Pencil" />
                 </Button>
                 <Separator />
-                <Button ToolTip="Save">
+                <Button ToolTip="Apagar" Click="Button_Apagar_Click">
                     <materialDesign:PackIcon Kind="Trash" />
                 </Button>
                 <Separator />
             </ToolBar>
         </ToolBarTray>
 
-        <DataGrid Margin="22,86,34,64" ItemsSource="{Binding Items3}" CanUserSortColumns="True" CanUserAddRows="False" >
+        <DataGrid x:Name="dtaCorretores" AutoGenerateColumns="False" Margin="22,86,34,64" ItemsSource="{Binding Items3}" CanUserSortColumns="True" CanUserAddRows="False" >
             <DataGrid.Columns>
-                <materialDesign:DataGridTextColumn Header="ID" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
-                <materialDesign:DataGridTextColumn Header="Nome" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
-                <materialDesign:DataGridTextColumn Header="CPF" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
-                <materialDesign:DataGridTextColumn Header="Email" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
-                <materialDesign:DataGridTextColumn Header="Telefone" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
-                <materialDesign:DataGridTextColumn Header="COEFI" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
-                <materialDesign:DataGridTextColumn Header="Cidade" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
-                <materialDesign:DataGridTextColumn Header="UF" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
-                <materialDesign:DataGridTextColumn Header="Renda/Comissão" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
+                <materialDesign:DataGridTextColumn Header="ID"  Binding="{Binding Id}" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
+                <materialDesign:DataGridTextColumn Header="Nome" Binding="{Binding Nome}" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
+                <materialDesign:DataGridTextColumn Header="CPF" Binding="{Binding Cpf}" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
+                <materialDesign:DataGridTextColumn Header="Email" Binding="{Binding Email}" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
+                <materialDesign:DataGridTextColumn Header="Telefone" Binding="{Binding Telefone}" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
+                <materialDesign:DataGridTextColumn Header="COFECI" Binding="{Binding Cofeci}" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
+                <materialDesign:DataGridTextColumn Header="Cidade" Binding="{Binding Cidade}" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
+                <materialDesign:DataGridTextColumn Header="UF" Binding="{Binding UF}" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

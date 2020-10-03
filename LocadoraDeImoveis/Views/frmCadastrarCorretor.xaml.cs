@@ -1,4 +1,6 @@
-﻿using LocadoraDeImoveis.Models;
+﻿using LocadoraDeImoveis.DAL;
+using LocadoraDeImoveis.Models;
+using LocadoraDeImoveis.Utils;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -19,6 +21,7 @@ namespace LocadoraDeImoveis.Views
     public partial class frmCadastrarCorretor : Window
     {
         Corretor Corretor { get; set; }
+        BuscaCepUtils BuscaCep = new BuscaCepUtils();
         public frmCadastrarCorretor()
         {
             InitializeComponent();
@@ -45,12 +48,43 @@ namespace LocadoraDeImoveis.Views
                     Cofeci = txtCOEFI.Text,
                     UF = txtUF.Text
                 };
+
+                if (CorretorDAO.Cadastrar(Corretor))
+                {
+                    MessageBox.Show("Corretor salvo com sucesso!", "Imob",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
+                    LimparFormulario();
+                }
+                else
+                {
+                    MessageBox.Show("Erro interno: contate um ADM!", "Imob",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
             else
             {
                 MessageBox.Show("Todos os campos são obrigatórios", "Imob",
                     MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            }        
+        }
+        
+        public void LimparFormulario()
+        {
+            txtNome.Clear();
+            txtCPF.Clear();
+            txtTelefone.Clear();
+            txtEmail.Clear();
+            txtCidade.Clear();
+            txtCOEFI.Clear();
+            txtUF.Clear();
+        }
+
+        private void BtnBuscaCep_Click(object sender, RoutedEventArgs e)
+        {
+            var Cep = BuscaCep.BuscarCepService(txtCEP.Text);
+            txtCidade.Text = Cep.localidade;
+            txtUF.Text = Cep.uf;
         }
     }
+
 }

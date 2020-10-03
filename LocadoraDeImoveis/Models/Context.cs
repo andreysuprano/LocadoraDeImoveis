@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using System.IO;
+using System.Reflection;
 
 namespace LocadoraDeImoveis.Models
 {
@@ -9,19 +11,13 @@ namespace LocadoraDeImoveis.Models
         public DbSet<Contrato> Contratos { get; set; }
         public DbSet<Imovel> Imoveis { get; set; }
         public DbSet<Locatario> Locatarios { get; set; }
-        public DbSet<TipoImovel> TipoImovel { get; set; }
-        private IConfiguration Configuration { get; set; }
+        public DbSet<TipoImovel> TipoImovel { get; set; }        
         string ConnectionString { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer($@"{GetConnectionString()}");
+            optionsBuilder.UseSqlServer(@"Server=mssql914.umbler.com,5003;Database=projetodecsharp;User Id=projeto;Password=projetocsharp;");
         }
-
-        private string GetConnectionString()
-        {
-            ConnectionString = Configuration.GetSection("ConnectionString").Value;
-            return ConnectionString;
-        }
+        
     }
 }

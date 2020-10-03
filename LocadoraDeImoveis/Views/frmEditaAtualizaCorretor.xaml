@@ -1,4 +1,4 @@
-﻿<Window x:Class="LocadoraDeImoveis.Views.frmCadastrarCorretor"
+﻿<Window x:Class="LocadoraDeImoveis.Views.frmEditaAtualizaCorretor"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,26 +6,29 @@
         xmlns:local="clr-namespace:LocadoraDeImoveis.Views"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"  
         mc:Ignorable="d"
-        Title="Cadastrar Corretor" Background="#FFF"  WindowStartupLocation="CenterScreen" WindowStyle="SingleBorderWindow" MaxHeight="500" MinHeight="500" MaxWidth="400" MinWidth="400" Height="494">
+        Title="Editar/Excluir" Background="#FFF"  WindowStartupLocation="CenterScreen" WindowStyle="SingleBorderWindow" MaxHeight="500" MinHeight="500" MaxWidth="400" MinWidth="400" Height="494">
     <Grid MaxHeight="500" MinHeight="500" MaxWidth="400" MinWidth="400" Panel.ZIndex="0">
         <StackPanel >
-            <TextBox x:Name="txtNome" Style="{StaticResource MaterialDesignTextBox}" IsEnabled="{Binding IsChecked, ElementName=MaterialDesignOutlinedPasswordFieldPasswordBoxEnabledComboBox}" materialDesign:HintAssist.Hint="Nome" Width="360" Margin="0,15,0,0" Cursor="IBeam" />
+            <TextBox x:Name="txtNome" Style="{StaticResource MaterialDesignTextBox}" IsEnabled="{Binding IsChecked, ElementName=MaterialDesignOutlinedPasswordFieldPasswordBoxEnabledComboBox}" materialDesign:HintAssist.Hint="Nome" Width="314" Margin="0,25,47,0" Cursor="IBeam" />
             <TextBox x:Name="txtCPF" Style="{StaticResource MaterialDesignTextBox}" IsEnabled="{Binding IsChecked, ElementName=MaterialDesignOutlinedPasswordFieldPasswordBoxEnabledComboBox}" materialDesign:HintAssist.Hint="CPF" Width="360" Margin="0,15,0,0" />
             <TextBox x:Name="txtTelefone" Style="{StaticResource MaterialDesignTextBox}" IsEnabled="{Binding IsChecked, ElementName=MaterialDesignOutlinedPasswordFieldPasswordBoxEnabledComboBox}" materialDesign:HintAssist.Hint="Telefone" Width="360" Margin="0,15,0,0" />
             <TextBox x:Name="txtEmail" Style="{StaticResource MaterialDesignTextBox}" IsEnabled="{Binding IsChecked, ElementName=MaterialDesignOutlinedPasswordFieldPasswordBoxEnabledComboBox}" materialDesign:HintAssist.Hint="Email" Width="360" Margin="0,15,0,0" />
             <TextBox x:Name="txtCOEFI" Style="{StaticResource MaterialDesignTextBox}" IsEnabled="{Binding IsChecked, ElementName=MaterialDesignOutlinedPasswordFieldPasswordBoxEnabledComboBox}" materialDesign:HintAssist.Hint="COEFI" Width="360" Margin="0,15,0,0" />
-            <TextBox x:Name="txtCEP" Style="{StaticResource MaterialDesignTextBox}" IsEnabled="{Binding IsChecked, ElementName=MaterialDesignOutlinedPasswordFieldPasswordBoxEnabledComboBox}" materialDesign:HintAssist.Hint="CEP" Width="322" Margin="0,15,40,0" />
             <TextBox x:Name="txtCidade" Style="{StaticResource MaterialDesignTextBox}" IsEnabled="{Binding IsChecked, ElementName=MaterialDesignOutlinedPasswordFieldPasswordBoxEnabledComboBox}" materialDesign:HintAssist.Hint="Cidade" Width="360" Margin="0,15,0,0" />
             <TextBox x:Name="txtUF" Style="{StaticResource MaterialDesignTextBox}" IsEnabled="{Binding IsChecked, ElementName=MaterialDesignOutlinedPasswordFieldPasswordBoxEnabledComboBox}" materialDesign:HintAssist.Hint="UF" Width="360" Margin="0,15,0,0" />
         </StackPanel>
-        <Button x:Name="BtnBuscaCep" Style="{StaticResource MaterialDesignRaisedDarkButton}" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" Margin="327,200,20,260" Click="BtnBuscaCep_Click" Height="40">
+        <Button x:Name="BtnBuscaNome" Style="{StaticResource MaterialDesignRaisedDarkButton}" ToolTip="Resource name: Salvar" Margin="327,11,20,449" Height="40" Click="BtnBuscaNome_Click">
             <materialDesign:PackIcon Kind="Search" Height="24" Width="24" />
         </Button>
-        <Button x:Name="BtnSalvar" Style="{StaticResource MaterialDesignRaisedDarkButton}" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"  Background="#FF06C781" FontFamily="Roboto" Panel.ZIndex="9999" BorderBrush="#0008AC71" Height="40" Width="360" Margin="20,356,20,104" Click="BtnSalvar_Click">
+        <Button x:Name="BtnSalvar" Style="{StaticResource MaterialDesignRaisedDarkButton}" ToolTip="Resource name: Excluir"  Background="#FF06C781" FontFamily="Roboto" Panel.ZIndex="9999" BorderBrush="#0008AC71" Height="40" Width="360" Margin="20,307,20,153" Click="BtnSalvar_Click">
             Salvar
         </Button>
-        <Button x:Name="BtnCancelar" Style="{StaticResource MaterialDesignRaisedDarkButton}" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"  Background="#FFDEDE07" FontFamily="Roboto" Panel.ZIndex="9999" BorderBrush="#0008AC71" Height="40" Width="360" Margin="20,404,20,56" Click="BtnCancelar_Click">
+        <Button x:Name="BtnExluir" Style="{StaticResource MaterialDesignRaisedDarkButton}" ToolTip="Resource name: Excluir"  Background="#FFC7064C" FontFamily="Roboto" Panel.ZIndex="9999" BorderBrush="#0008AC71" Height="40" Width="360" Margin="20,356,20,104" Click="BtnExluir_Click" >
+            Excluir
+        </Button>
+        <Button x:Name="BtnCancelar" Style="{StaticResource MaterialDesignRaisedDarkButton}" ToolTip="Resource name: Cancelar"  Background="#FFDEDE07" FontFamily="Roboto" Panel.ZIndex="9999" BorderBrush="#0008AC71" Height="40" Width="360" Margin="20,404,20,56" Click="BtnCancelar_Click">
             Cancelar
         </Button>
+        
     </Grid>
 </Window>
