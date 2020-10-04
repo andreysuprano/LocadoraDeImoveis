@@ -41,7 +41,7 @@ namespace LocadoraDeImoveis.Views
 
         private void ToolNovo_Click(object sender, RoutedEventArgs e)
         {
-            frmCadastrarCorretor frmCadastrarCorretor = new frmCadastrarCorretor();
+            frmCadastrarCorretor frmCadastrarCorretor = new frmCadastrarCorretor();            
             frmCadastrarCorretor.ShowDialog();
         }
 
@@ -102,12 +102,14 @@ namespace LocadoraDeImoveis.Views
         private void Button_Editar_Click(object sender, RoutedEventArgs e)
         {            
             frmEditaAtualizaCorretor frm = new frmEditaAtualizaCorretor();
+            frm.BtnExluir.IsEnabled = false;
             frm.ShowDialog();            
         }
 
         private void Button_Apagar_Click(object sender, RoutedEventArgs e)
         {
             frmEditaAtualizaCorretor frm = new frmEditaAtualizaCorretor();
+            frm.BtnSalvar.IsEnabled = false;
             frm.ShowDialog();
         }
 

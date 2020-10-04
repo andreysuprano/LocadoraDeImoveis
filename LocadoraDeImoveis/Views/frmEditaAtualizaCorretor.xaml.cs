@@ -1,5 +1,6 @@
 ﻿using LocadoraDeImoveis.DAL;
 using LocadoraDeImoveis.Models;
+using LocadoraDeImoveis.Utils;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -19,8 +20,8 @@ namespace LocadoraDeImoveis.Views
     /// </summary>
     public partial class frmEditaAtualizaCorretor : Window
     {
-        Corretor Corretor;
-        Corretor CorretorBuscado;
+        private Corretor Corretor;
+        public bool Exlcuir = false;
         public frmEditaAtualizaCorretor()
         {
             InitializeComponent();
@@ -32,29 +33,36 @@ namespace LocadoraDeImoveis.Views
                 !string.IsNullOrWhiteSpace(txtEmail.Text) || !string.IsNullOrWhiteSpace(txtCidade.Text) || !string.IsNullOrWhiteSpace(txtCOEFI.Text) ||
                 !string.IsNullOrWhiteSpace(txtUF.Text))
             {
-                Corretor = new Corretor()
+                Corretor.Id = Convert.ToInt32(txtId.Text);
+                Corretor.Nome = txtNome.Text;
+                Corretor.Cpf = txtCPF.Text;
+                Corretor.Telefone = txtTelefone.Text;
+                Corretor.Email = txtEmail.Text;
+                Corretor.Cidade = txtCidade.Text;
+                Corretor.Cofeci = txtCOEFI.Text;
+                Corretor.UF = txtUF.Text;
+
+                if (!ValidacaoCpfUtils.ValidarCpf(txtCPF.Text))
                 {
-                    Id = Convert.ToInt32(txtId.Text),
-                    Nome = txtNome.Text,
-                    Cpf = txtCPF.Text,
-                    Telefone = txtTelefone.Text,
-                    Email = txtEmail.Text,
-                    Cidade = txtCidade.Text,
-                    Cofeci = txtCOEFI.Text,
-                    UF = txtUF.Text
-                };
-                
-                if (CorretorDAO.Atualizar(Corretor))
-                {
-                    MessageBox.Show("Corretor salvo com sucesso!", "Imob",
+                    MessageBox.Show("CPF Inválido!", "Imob",
                     MessageBoxButton.OK, MessageBoxImage.Information);
                     LimparFormulario();
                 }
                 else
                 {
-                    MessageBox.Show("Erro interno: contate um ADM!", "Imob",
-                    MessageBoxButton.OK, MessageBoxImage.Error);
+                    if (CorretorDAO.Atualizar(Corretor))
+                    {
+                        MessageBox.Show("Corretor salvo com sucesso!", "Imob",
+                        MessageBoxButton.OK, MessageBoxImage.Information);
+                        LimparFormulario();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Erro interno: contate um ADM!", "Imob",
+                        MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
                 }
+                
             }
             else
             {
@@ -65,17 +73,17 @@ namespace LocadoraDeImoveis.Views
 
         private void BtnBuscaNome_Click(object sender, RoutedEventArgs e)
         {
+            Corretor = CorretorDAO.BuscarPorNome(txtNome.Text);
             if (!string.IsNullOrWhiteSpace(txtNome.Text))
-            {
-                CorretorBuscado = CorretorDAO.BuscarPorNome(txtNome.Text);
-                txtId.Text = CorretorBuscado.Id.ToString();
-                txtNome.Text = CorretorBuscado.Nome;
-                txtEmail.Text = CorretorBuscado.Email;
-                txtTelefone.Text = CorretorBuscado.Telefone;
-                txtCPF.Text = CorretorBuscado.Cpf;
-                txtCOEFI.Text = CorretorBuscado.Cofeci;
-                txtCidade.Text = CorretorBuscado.Cidade;
-                txtUF.Text = CorretorBuscado.UF;
+            {                
+                txtId.Text = Corretor.Id.ToString();
+                txtNome.Text = Corretor.Nome;
+                txtEmail.Text = Corretor.Email;
+                txtTelefone.Text = Corretor.Telefone;
+                txtCPF.Text = Corretor.Cpf;
+                txtCOEFI.Text = Corretor.Cofeci;
+                txtCidade.Text = Corretor.Cidade;
+                txtUF.Text = Corretor.UF;
             }
             else
             {
@@ -100,17 +108,14 @@ namespace LocadoraDeImoveis.Views
                 !string.IsNullOrWhiteSpace(txtEmail.Text) || !string.IsNullOrWhiteSpace(txtCidade.Text) || !string.IsNullOrWhiteSpace(txtCOEFI.Text) ||
                 !string.IsNullOrWhiteSpace(txtUF.Text))
             {
-                Corretor = new Corretor()
-                {
-                    Nome = txtNome.Text,
-                    Cpf = txtCPF.Text,
-                    Telefone = txtTelefone.Text,
-                    Email = txtEmail.Text,
-                    Cidade = txtCidade.Text,
-                    Cofeci = txtCOEFI.Text,
-                    UF = txtUF.Text
-                };
-                
+                Corretor.Nome = txtNome.Text;
+                Corretor.Cpf = txtCPF.Text;
+                Corretor.Telefone = txtTelefone.Text;
+                Corretor.Email = txtEmail.Text;
+                Corretor.Cidade = txtCidade.Text;
+                Corretor.Cofeci = txtCOEFI.Text;
+                Corretor.UF = txtUF.Text;
+
                 if (CorretorDAO.Remover(Corretor))
                 {
                     MessageBox.Show("Corretor excluído com sucesso!", "Imob",

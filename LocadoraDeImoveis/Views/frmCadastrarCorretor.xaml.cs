@@ -48,17 +48,24 @@ namespace LocadoraDeImoveis.Views
                     Cofeci = txtCOEFI.Text,
                     UF = txtUF.Text
                 };
-
-                if (CorretorDAO.Cadastrar(Corretor))
+                if (!ValidacaoCpfUtils.ValidarCpf(txtCPF.Text))
                 {
-                    MessageBox.Show("Corretor salvo com sucesso!", "Imob",
-                    MessageBoxButton.OK, MessageBoxImage.Information);
-                    LimparFormulario();
+                    MessageBox.Show("CPF Inválido!", "Imob",
+                    MessageBoxButton.OK, MessageBoxImage.Information);   
                 }
                 else
                 {
-                    MessageBox.Show("Erro interno: contate um ADM!", "Imob",
-                    MessageBoxButton.OK, MessageBoxImage.Error);
+                    if (CorretorDAO.Cadastrar(Corretor))
+                    {
+                        MessageBox.Show("Corretor salvo com sucesso!", "Imob",
+                        MessageBoxButton.OK, MessageBoxImage.Information);
+                        LimparFormulario();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Erro interno: contate um ADM!", "Imob",
+                        MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
                 }
             }
             else
