@@ -24,17 +24,17 @@
                     <materialDesign:PackIcon Kind="BriefcaseOutline" />
                 </MenuItem.Icon>                
             </MenuItem>
-            <MenuItem Header="_Locatários" x:Name="AbrirLocatarios">
+            <MenuItem Header="_Locatários" x:Name="AbrirLocatarios" Click="AbrirLocatarios_Click">
                 <MenuItem.Icon>
                     <materialDesign:PackIcon Kind="AccountKey" />
                 </MenuItem.Icon>                
             </MenuItem>
-            <MenuItem Header="_Imóveis" x:Name="AbrirImoveis">
+            <MenuItem Header="_Imóveis" x:Name="AbrirImoveis" Click="AbrirImoveis_Click">
                 <MenuItem.Icon>
                     <materialDesign:PackIcon Kind="Home" />
                 </MenuItem.Icon>                
             </MenuItem>
-            <MenuItem Header="_Contratos" x:Name="AbrirContratos">
+            <MenuItem Header="_Contratos" x:Name="AbrirContratos" Click="AbrirContratos_Click">
                 <MenuItem.Icon>
                     <materialDesign:PackIcon Kind="Invoice" />
                 </MenuItem.Icon>               

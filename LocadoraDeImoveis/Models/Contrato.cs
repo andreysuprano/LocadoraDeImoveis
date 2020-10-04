@@ -11,5 +11,6 @@ namespace LocadoraDeImoveis.Models
         public int IdLocatario { get; set; }
         public double ValorAluguel { get; set; }
         public double ComissaoCorretor { get; set; }
+        public int IdCorretor { get; set; }
     }
 }

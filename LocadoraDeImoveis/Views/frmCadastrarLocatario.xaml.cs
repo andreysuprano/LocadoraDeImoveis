@@ -1,19 +1,19 @@
 ﻿using LocadoraDeImoveis.DAL;
 using LocadoraDeImoveis.Models;
 using LocadoraDeImoveis.Utils;
+using System;
 using System.Windows;
-
 
 namespace LocadoraDeImoveis.Views
 {
     /// <summary>
-    /// Interaction logic for frmCadastrarCorretor.xaml
+    /// Lógica interna para frmCadastrarLocatario.xaml
     /// </summary>
-    public partial class frmCadastrarCorretor : Window
+    public partial class frmCadastrarLocatario : Window
     {
-        Corretor Corretor { get; set; }
+        Locatario Locatario { get; set; }
         BuscaCepUtils BuscaCep = new BuscaCepUtils();
-        public frmCadastrarCorretor()
+        public frmCadastrarLocatario()
         {
             InitializeComponent();
         }
@@ -26,27 +26,27 @@ namespace LocadoraDeImoveis.Views
         private void BtnSalvar_Click(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(txtNome.Text) || !string.IsNullOrWhiteSpace(txtCPF.Text) || !string.IsNullOrWhiteSpace(txtTelefone.Text) ||
-                !string.IsNullOrWhiteSpace(txtEmail.Text) || !string.IsNullOrWhiteSpace(txtCidade.Text) || !string.IsNullOrWhiteSpace(txtCOEFI.Text) ||
+                !string.IsNullOrWhiteSpace(txtEmail.Text) || !string.IsNullOrWhiteSpace(txtCidade.Text) || !string.IsNullOrWhiteSpace(txtRendaDisponivel.Text) ||
                 !string.IsNullOrWhiteSpace(txtUF.Text))
             {
-                Corretor = new Corretor()
+                Locatario = new Locatario()
                 {
                     Nome = txtNome.Text,
                     Cpf = txtCPF.Text,
                     Telefone = txtTelefone.Text,
                     Email = txtEmail.Text,
                     Cidade = txtCidade.Text,
-                    Cofeci = txtCOEFI.Text,
+                    RendaDisponivel = Convert.ToDouble(txtRendaDisponivel.Text.Replace(",",".")),
                     UF = txtUF.Text
                 };
-                if (!ValidacaoCpfUtils.ValidarCpf(txtCPF.Text) && !CorretorDAO.BuscarPorCpf(txtCPF.Text))
+                if (!ValidacaoCpfUtils.ValidarCpf(txtCPF.Text) && !LocatarioDAO.BuscarPorCpf(txtCPF.Text))
                 {
-                    MessageBox.Show("CPF Inválido!", "Imob",
-                    MessageBoxButton.OK, MessageBoxImage.Information);   
+                    MessageBox.Show("CPF Inválido ou já está cadastrado", "Imob",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 else
                 {
-                    if (CorretorDAO.Cadastrar(Corretor))
+                    if (LocatarioDAO.Cadastrar(Locatario))
                     {
                         MessageBox.Show("Corretor salvo com sucesso!", "Imob",
                         MessageBoxButton.OK, MessageBoxImage.Information);
@@ -63,9 +63,9 @@ namespace LocadoraDeImoveis.Views
             {
                 MessageBox.Show("Todos os campos são obrigatórios", "Imob",
                     MessageBoxButton.OK, MessageBoxImage.Error);
-            }        
+            }
         }
-        
+
         public void LimparFormulario()
         {
             txtNome.Clear();
@@ -73,7 +73,7 @@ namespace LocadoraDeImoveis.Views
             txtTelefone.Clear();
             txtEmail.Clear();
             txtCidade.Clear();
-            txtCOEFI.Clear();
+            txtRendaDisponivel.Clear();
             txtUF.Clear();
         }
 
@@ -84,5 +84,4 @@ namespace LocadoraDeImoveis.Views
             txtUF.Text = Cep.uf;
         }
     }
-
 }

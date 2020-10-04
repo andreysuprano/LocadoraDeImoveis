@@ -7,13 +7,13 @@ using System.Windows;
 namespace LocadoraDeImoveis.Views
 {
     /// <summary>
-    /// Lógica interna para frmEditaAtualizaCorretor.xaml
+    /// Lógica interna para frmEditaAtualizaLocatario.xaml
     /// </summary>
-    public partial class frmEditaAtualizaCorretor : Window
+    public partial class frmEditaAtualizaLocatario : Window
     {
-        private Corretor Corretor;
+        private Locatario Locatario;
         public bool Exlcuir = false;
-        public frmEditaAtualizaCorretor()
+        public frmEditaAtualizaLocatario()
         {
             InitializeComponent();
         }
@@ -21,18 +21,18 @@ namespace LocadoraDeImoveis.Views
         private void BtnSalvar_Click(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(txtNome.Text) || !string.IsNullOrWhiteSpace(txtCPF.Text) || !string.IsNullOrWhiteSpace(txtTelefone.Text) ||
-                !string.IsNullOrWhiteSpace(txtEmail.Text) || !string.IsNullOrWhiteSpace(txtCidade.Text) || !string.IsNullOrWhiteSpace(txtCOEFI.Text) ||
+                !string.IsNullOrWhiteSpace(txtEmail.Text) || !string.IsNullOrWhiteSpace(txtCidade.Text) || !string.IsNullOrWhiteSpace(txtRendaDisponivel.Text) ||
                 !string.IsNullOrWhiteSpace(txtUF.Text))
             {
-                
-                Corretor.Id = Convert.ToInt32(txtId.Text);
-                Corretor.Nome = txtNome.Text;
-                Corretor.Cpf = txtCPF.Text;
-                Corretor.Telefone = txtTelefone.Text;
-                Corretor.Email = txtEmail.Text;
-                Corretor.Cidade = txtCidade.Text;
-                Corretor.Cofeci = txtCOEFI.Text;
-                Corretor.UF = txtUF.Text;
+
+                Locatario.Id = Convert.ToInt32(txtId.Text);
+                Locatario.Nome = txtNome.Text;
+                Locatario.Cpf = txtCPF.Text;
+                Locatario.Telefone = txtTelefone.Text;
+                Locatario.Email = txtEmail.Text;
+                Locatario.Cidade = txtCidade.Text;
+                Locatario.RendaDisponivel = Convert.ToInt32(txtRendaDisponivel.Text);
+                Locatario.UF = txtUF.Text;
 
                 if (!ValidacaoCpfUtils.ValidarCpf(txtCPF.Text))
                 {
@@ -42,9 +42,9 @@ namespace LocadoraDeImoveis.Views
                 }
                 else
                 {
-                    if (CorretorDAO.Atualizar(Corretor))
+                    if (LocatarioDAO.Atualizar(Locatario))
                     {
-                        MessageBox.Show("Corretor salvo com sucesso!", "Imob",
+                        MessageBox.Show("Locatario salvo com sucesso!", "Imob",
                         MessageBoxButton.OK, MessageBoxImage.Information);
                         LimparFormulario();
                     }
@@ -54,7 +54,7 @@ namespace LocadoraDeImoveis.Views
                         MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
-                               
+
             }
             else
             {
@@ -65,20 +65,20 @@ namespace LocadoraDeImoveis.Views
 
         private void BtnBuscaNome_Click(object sender, RoutedEventArgs e)
         {
-            Corretor = CorretorDAO.BuscarPorNome(txtNome.Text);
+            Locatario = LocatarioDAO.BuscarPorNome(txtNome.Text);
             if (!string.IsNullOrWhiteSpace(txtNome.Text))
             {
-                
-                if (CorretorDAO.BuscarPorNome(txtNome.Text) != null)
+
+                if (LocatarioDAO.BuscarPorNome(txtNome.Text) != null)
                 {
-                    txtId.Text = Corretor.Id.ToString();
-                    txtNome.Text = Corretor.Nome;
-                    txtEmail.Text = Corretor.Email;
-                    txtTelefone.Text = Corretor.Telefone;
-                    txtCPF.Text = Corretor.Cpf;
-                    txtCOEFI.Text = Corretor.Cofeci;
-                    txtCidade.Text = Corretor.Cidade;
-                    txtUF.Text = Corretor.UF;
+                    txtId.Text = Locatario.Id.ToString();
+                    txtNome.Text = Locatario.Nome;
+                    txtEmail.Text = Locatario.Email;
+                    txtTelefone.Text = Locatario.Telefone;
+                    txtCPF.Text = Locatario.Cpf;
+                    txtRendaDisponivel.Text = Locatario.RendaDisponivel.ToString();
+                    txtCidade.Text = Locatario.Cidade;
+                    txtUF.Text = Locatario.UF;
                 }
                 else
                 {
@@ -99,27 +99,27 @@ namespace LocadoraDeImoveis.Views
             txtTelefone.Clear();
             txtEmail.Clear();
             txtCidade.Clear();
-            txtCOEFI.Clear();
+            txtRendaDisponivel.Clear();
             txtUF.Clear();
         }
 
         private void BtnExluir_Click(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(txtNome.Text) || !string.IsNullOrWhiteSpace(txtCPF.Text) || !string.IsNullOrWhiteSpace(txtTelefone.Text) ||
-                !string.IsNullOrWhiteSpace(txtEmail.Text) || !string.IsNullOrWhiteSpace(txtCidade.Text) || !string.IsNullOrWhiteSpace(txtCOEFI.Text) ||
+                !string.IsNullOrWhiteSpace(txtEmail.Text) || !string.IsNullOrWhiteSpace(txtCidade.Text) || !string.IsNullOrWhiteSpace(txtRendaDisponivel.Text) ||
                 !string.IsNullOrWhiteSpace(txtUF.Text))
             {
-                Corretor.Nome = txtNome.Text;
-                Corretor.Cpf = txtCPF.Text;
-                Corretor.Telefone = txtTelefone.Text;
-                Corretor.Email = txtEmail.Text;
-                Corretor.Cidade = txtCidade.Text;
-                Corretor.Cofeci = txtCOEFI.Text;
-                Corretor.UF = txtUF.Text;
+                Locatario.Nome = txtNome.Text;
+                Locatario.Cpf = txtCPF.Text;
+                Locatario.Telefone = txtTelefone.Text;
+                Locatario.Email = txtEmail.Text;
+                Locatario.Cidade = txtCidade.Text;
+                Locatario.RendaDisponivel = Convert.ToInt32(txtRendaDisponivel.Text);
+                Locatario.UF = txtUF.Text;
 
-                if (CorretorDAO.Remover(Corretor))
+                if (LocatarioDAO.Remover(Locatario))
                 {
-                    MessageBox.Show("Corretor excluído com sucesso!", "Imob",
+                    MessageBox.Show("Locatario excluído com sucesso!", "Imob",
                     MessageBoxButton.OK, MessageBoxImage.Information);
                     LimparFormulario();
                 }

@@ -10,6 +10,15 @@ namespace LocadoraDeImoveis.DAL
         public static Corretor BuscarPorNome(string nome) =>
             _context.Corretores.FirstOrDefault(x => x.Nome == nome);
 
+        public static bool BuscarPorCpf(string cpf){
+             var x = _context.Corretores.FirstOrDefault(x => x.Cpf == cpf);
+            if(x != null)
+            {
+                return false;
+            }
+            return true;
+        }
+
         public static Corretor BuscarPorId(int id) =>
             _context.Corretores.Find(id);
 
@@ -46,7 +55,8 @@ namespace LocadoraDeImoveis.DAL
             }
             return true;
         }
-
+        public static List<Corretor> FiltrarPorParteNome(string parteNome) =>
+            _context.Corretores.Where(x => x.Nome.Contains(parteNome)).ToList();
         public static List<Corretor> Listar() => _context.Corretores.ToList();        
     }
 }
