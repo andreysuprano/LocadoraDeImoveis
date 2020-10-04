@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+
 
 namespace LocadoraDeImoveis.Utils
 {
@@ -70,7 +69,7 @@ namespace LocadoraDeImoveis.Utils
             if (Convert.ToInt32(cpf[10].ToString()) != digito2)
             {
                 return false;
-            }
+            }          
             return true;
         }
     }

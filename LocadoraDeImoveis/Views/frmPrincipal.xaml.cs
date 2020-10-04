@@ -40,5 +40,24 @@ namespace LocadoraDeImoveis.Views
             frmCorretores frmCorretores = new frmCorretores();
             frmCorretores.Show();
         }
+
+        private void AbrirLocatarios_Click(object sender, RoutedEventArgs e)
+        {
+            frmLocatarios frm = new frmLocatarios();
+            frm.Show();
+        }
+
+        private void AbrirImoveis_Click(object sender, RoutedEventArgs e)
+        {
+            frmImoveis frm = new frmImoveis();
+            frm.Show();
+        }
+
+        private void AbrirContratos_Click(object sender, RoutedEventArgs e)
+        {
+            frmContratos frm = new frmContratos();
+            frm.Show();
+
+        }
     }
 }

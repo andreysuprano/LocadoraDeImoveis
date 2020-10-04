@@ -4,14 +4,16 @@ using LocadoraDeImoveis.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LocadoraDeImoveis.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20201004054346_AddEndereco")]
+    partial class AddEndereco
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -110,7 +112,7 @@ namespace LocadoraDeImoveis.Migrations
                     b.Property<bool>("Locado")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("TipoImovelId")
+                    b.Property<int>("TipoImovel")
                         .HasColumnType("int");
 
                     b.Property<string>("UF")
@@ -120,8 +122,6 @@ namespace LocadoraDeImoveis.Migrations
                         .HasColumnType("float");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("TipoImovelId");
 
                     b.ToTable("Imoveis");
                 });
@@ -181,13 +181,6 @@ namespace LocadoraDeImoveis.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TipoImovel");
-                });
-
-            modelBuilder.Entity("LocadoraDeImoveis.Models.Imovel", b =>
-                {
-                    b.HasOne("LocadoraDeImoveis.Models.TipoImovel", "TipoImovel")
-                        .WithMany()
-                        .HasForeignKey("TipoImovelId");
                 });
 #pragma warning restore 612, 618
         }
