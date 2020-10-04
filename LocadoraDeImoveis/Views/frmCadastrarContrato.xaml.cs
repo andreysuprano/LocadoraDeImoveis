@@ -49,7 +49,7 @@ namespace LocadoraDeImoveis.Views
                 var Locatario = LocatarioDAO.BuscarPorId((int)cboLocatario.SelectedValue);
                 Contrato = new Contrato()
                 {
-                    ComissaoCorretor = TipoImovel.Comissao / 10 * Imovel.ValorAluguel,
+                    ComissaoCorretor = (TipoImovel.Comissao * 0.01) * Imovel.ValorAluguel,
                     DataVencimento = txtDataVencimento.SelectedDate.Value,
                     IdCorretor = Corretor.Id,
                     IdImovel = Imovel.Id,

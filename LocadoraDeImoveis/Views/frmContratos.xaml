@@ -19,7 +19,7 @@
                     <materialDesign:PackIcon Kind="ArrowBack" />
                 </Button>
                 <Separator />
-                <Button ToolTip="Novo Corretor" x:Name="ToolNovo" Click="ToolNovo_Click">
+                <Button ToolTip="Novo Contrato" x:Name="ToolNovo" Click="ToolNovo_Click">
                     <materialDesign:PackIcon Kind="Add" />
                 </Button>
                 <Separator />

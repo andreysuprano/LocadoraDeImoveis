@@ -106,6 +106,12 @@ namespace LocadoraDeImoveis.Views
             frm.BtnExluir.IsEnabled = false;
             frm.ShowDialog();            
         }
+        private void Button_Apagar_Click(object sender, RoutedEventArgs e)
+        {
+            frmEditaAtualizaCorretor frm = new frmEditaAtualizaCorretor();
+            frm.BtnSalvar.IsEnabled = false;
+            frm.ShowDialog();
+        }
         private void Refresh_Click(object sender, RoutedEventArgs e)
         {
             itens.Clear();

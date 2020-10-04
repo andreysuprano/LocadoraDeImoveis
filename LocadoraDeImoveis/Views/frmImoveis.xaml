@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:LocadoraDeImoveis.Views"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"        
         mc:Ignorable="d"
-        Title="Corretores" Background="#282A43"  WindowStartupLocation="CenterScreen" WindowStyle="SingleBorderWindow" MaxHeight="600" MinHeight="600" MaxWidth="900" MinWidth="900">
+        Title="Imóveis" Background="#282A43"  WindowStartupLocation="CenterScreen" WindowStyle="SingleBorderWindow" MaxHeight="600" MinHeight="600" MaxWidth="900" MinWidth="900">
     <Grid Background="#FF282A43" MaxHeight="600" MinHeight="600" MaxWidth="900" MinWidth="900">
         <CheckBox x:Name="filtroDisponivel" IsThreeState="False" Margin="561,-257,-561,265" Panel.ZIndex="999" FontWeight="Bold" Checked="filtroDisponivel_Checked" Unchecked="filtroDisponivel_Unchecked">
             Disponível
@@ -21,7 +21,7 @@
                     <materialDesign:PackIcon Kind="ArrowBack" />
                 </Button>
                 <Separator />
-                <Button ToolTip="Novo Corretor" x:Name="ToolNovo" Click="ToolNovo_Click">
+                <Button ToolTip="Novo Imóvel" x:Name="ToolNovo" Click="ToolNovo_Click">
                     <materialDesign:PackIcon Kind="Add" />
                 </Button>
                 <Separator />

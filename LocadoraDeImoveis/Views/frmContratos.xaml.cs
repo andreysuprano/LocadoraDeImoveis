@@ -40,8 +40,22 @@ namespace LocadoraDeImoveis.Views
 
         private void PopularDataGridInicial()
         {
-            itens = new List<Contrato>(); 
-            itens= ContratoDAO.Listar();
+            itens.Clear();
+            var listaDeContratos = ContratoDAO.Listar();
+            foreach (var contrato in listaDeContratos)
+            {
+                itens.Add(new Contrato()
+                {
+                    Id = contrato.Id,
+                    IdLocatario = contrato.IdLocatario,
+                    IdCorretor = contrato.IdCorretor,
+                    IdImovel = contrato.IdImovel,
+                    ComissaoCorretor = contrato.ComissaoCorretor,
+                    CriadoEm = contrato.CriadoEm,
+                    DataVencimento = contrato.DataVencimento,
+                    ValorAluguel = contrato.ValorAluguel
+                });
+            }
             dtaContratos.Items.Refresh();
         }
 
