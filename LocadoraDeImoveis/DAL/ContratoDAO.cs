@@ -13,6 +13,9 @@ namespace LocadoraDeImoveis.DAL
         public static Contrato BuscarPorId(int id) =>
             _context.Contratos.Include("Imovel").Include("Corretor").Include("Locatario").FirstOrDefault(x => x.Id == id);
 
+        public static List<Contrato> BuscarPorCorretor(string corretor) =>
+            _context.Contratos.Include("Imovel").Include("Corretor").Include("Locatario").Where(x => x.Corretor.Nome == corretor).ToList();
+
         public static bool Cadastrar(Contrato Contrato)
         {
             if (BuscarPorId(Contrato.Id) == null)

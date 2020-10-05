@@ -76,23 +76,25 @@ namespace LocadoraDeImoveis.Views
         {
             if (!string.IsNullOrWhiteSpace(txtBuscaPorNome.Text))
             {
-                var contrato = ContratoDAO.BuscarPorId(Convert.ToInt32(txtBuscaPorNome.Text));
-                itens.Clear();
-                itens.Add(new Contrato()
+                var contratos = ContratoDAO.BuscarPorCorretor(txtBuscaPorNome.Text);
+                itens.Clear();                
+                foreach (var contrato in contratos)
                 {
-                    Id = contrato.Id,
-                    ComissaoCorretor = contrato.ComissaoCorretor,
-                    CriadoEm = contrato.CriadoEm,
-                    DataVencimento = contrato.DataVencimento,
-                    CorretorId = contrato.CorretorId,
-                    ImovelId = contrato.ImovelId,
-                    LocatarioId = contrato.LocatarioId,
-                    ValorAluguel = contrato.ValorAluguel,
-                    Imovel = contrato.Imovel,
-                    Corretor = contrato.Corretor,
-                    Locatario = contrato.Locatario
-                });
-                ;
+                    itens.Add(new Contrato()
+                    {
+                        Id = contrato.Id,
+                        LocatarioId = contrato.LocatarioId,
+                        CorretorId = contrato.CorretorId,
+                        ImovelId = contrato.ImovelId,
+                        ComissaoCorretor = contrato.ComissaoCorretor,
+                        CriadoEm = contrato.CriadoEm,
+                        DataVencimento = contrato.DataVencimento,
+                        ValorAluguel = contrato.ValorAluguel,
+                        Imovel = contrato.Imovel,
+                        Corretor = contrato.Corretor,
+                        Locatario = contrato.Locatario
+                    });
+                }
                 dtaContratos.Items.Refresh();
             }
             else
