@@ -13,15 +13,14 @@ using System.Windows.Shapes;
 namespace LocadoraDeImoveis.Views
 {
     /// <summary>
-    /// Interaction logic for frmPrincipal.xaml
+    /// Lógica interna para frmSobre.xaml
     /// </summary>
-    public partial class frmPrincipal : Window
+    public partial class frmSobre : Window
     {
-        public frmPrincipal()
+        public frmSobre()
         {
             InitializeComponent();
         }
-
         private void menuSair_Click(object sender, RoutedEventArgs e)
         {
             Close();
@@ -29,7 +28,7 @@ namespace LocadoraDeImoveis.Views
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (MessageBox.Show("Deseja realmente sair?", "Vendas WPF", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.No)
+            if (MessageBox.Show("Você está fechando esta janela de informações, e voltará ao sistema!", "Vendas WPF", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.No)
             {
                 e.Cancel = true;
             }

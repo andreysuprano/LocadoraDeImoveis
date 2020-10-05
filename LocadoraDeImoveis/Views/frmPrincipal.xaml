@@ -39,6 +39,11 @@
                     <materialDesign:PackIcon Kind="Invoice" />
                 </MenuItem.Icon>               
             </MenuItem>
+            <MenuItem Header="_Sobre" x:Name="AbrirSobre" Click="AbrirSobre_Click">
+                <MenuItem.Icon>
+                    <materialDesign:PackIcon Kind="About" />
+                </MenuItem.Icon>
+            </MenuItem>
         </Menu>
 
         <materialDesign:Chip Content="Andrey Suprano" Background="#383B5A" Foreground="#FFF" Margin="169,486,0,82">
