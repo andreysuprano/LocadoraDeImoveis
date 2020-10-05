@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:LocadoraDeImoveis.Views"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"  
         mc:Ignorable="d"
-        Title="Cadastrar Corretor" Background="#FFF"  WindowStartupLocation="CenterScreen" WindowStyle="SingleBorderWindow" MaxHeight="500" MinHeight="500" MaxWidth="400" MinWidth="400" Height="494">
+        Title="Cadastrar Locatário" Background="#FFF"  WindowStartupLocation="CenterScreen" WindowStyle="SingleBorderWindow" MaxHeight="500" MinHeight="500" MaxWidth="400" MinWidth="400" Height="494">
     <Grid MaxHeight="500" MinHeight="500" MaxWidth="400" MinWidth="400" Panel.ZIndex="0">
         <StackPanel HorizontalAlignment="Center" >
             <TextBox x:Name="txtNome" Style="{StaticResource MaterialDesignTextBox}" IsEnabled="{Binding IsChecked, ElementName=MaterialDesignOutlinedPasswordFieldPasswordBoxEnabledComboBox}" materialDesign:HintAssist.Hint="Nome" Width="360" Margin="0,15,0,0" Cursor="IBeam" />

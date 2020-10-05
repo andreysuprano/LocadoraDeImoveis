@@ -48,7 +48,7 @@ namespace LocadoraDeImoveis.Views
                 {
                     if (LocatarioDAO.Cadastrar(Locatario))
                     {
-                        MessageBox.Show("Corretor salvo com sucesso!", "Imob",
+                        MessageBox.Show("Locatário salvo com sucesso!", "Imob",
                         MessageBoxButton.OK, MessageBoxImage.Information);
                         LimparFormulario();
                     }
