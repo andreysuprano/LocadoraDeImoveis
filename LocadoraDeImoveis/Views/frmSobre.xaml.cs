@@ -28,7 +28,7 @@ namespace LocadoraDeImoveis.Views
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (MessageBox.Show("Você está fechando esta janela de informações, e voltará ao sistema!", "Vendas WPF", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.No)
+            if (MessageBox.Show("Você está fechando esta janela de informações, e voltará ao sistema!", "IMob - Aluguel de Imóveis no Brasil", MessageBoxButton.OK, MessageBoxImage.Information) == MessageBoxResult.No)
             {
                 e.Cancel = true;
             }
