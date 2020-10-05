@@ -51,9 +51,9 @@ namespace LocadoraDeImoveis.Views
                 {
                     ComissaoCorretor = (TipoImovel.Comissao * 0.01) * Imovel.ValorAluguel,
                     DataVencimento = txtDataVencimento.SelectedDate.Value,
-                    IdCorretor = Corretor.Id,
-                    IdImovel = Imovel.Id,
-                    IdLocatario = Locatario.Id,
+                    CorretorId = Corretor.Id,
+                    ImovelId = Imovel.Id,
+                    LocatarioId = Locatario.Id,
                     ValorAluguel = Imovel.ValorAluguel
                 };
                 if(Imovel.Locado != true)

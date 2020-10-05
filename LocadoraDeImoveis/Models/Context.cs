@@ -15,7 +15,7 @@ namespace LocadoraDeImoveis.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=mssql914.umbler.com,5003;Database=projetodecsharp;User Id=projeto;Password=projetocsharp;")
+            optionsBuilder.UseSqlServer(@"Server=mssql914.umbler.com,5003;Database=projetocsharp;User Id=projeto;Password=projetocsharp;")
                 .EnableSensitiveDataLogging();
         }
         

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LocadoraDeImoveis.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20201004052502_CorrigeModelImovel")]
-    partial class CorrigeModelImovel
+    [Migration("20201005154836_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,25 +31,31 @@ namespace LocadoraDeImoveis.Migrations
                     b.Property<double>("ComissaoCorretor")
                         .HasColumnType("float");
 
+                    b.Property<int>("CorretorId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("CriadoEm")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("DataVencimento")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("IdCorretor")
+                    b.Property<int>("ImovelId")
                         .HasColumnType("int");
 
-                    b.Property<int>("IdImovel")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IdLocatario")
+                    b.Property<int>("LocatarioId")
                         .HasColumnType("int");
 
                     b.Property<double>("ValorAluguel")
                         .HasColumnType("float");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CorretorId");
+
+                    b.HasIndex("ImovelId");
+
+                    b.HasIndex("LocatarioId");
 
                     b.ToTable("Contratos");
                 });
@@ -106,13 +112,13 @@ namespace LocadoraDeImoveis.Migrations
                     b.Property<DateTime>("CriadoEm")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Descricao")
+                    b.Property<string>("Endereco")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("Locado")
                         .HasColumnType("bit");
 
-                    b.Property<int>("TipoImovel")
+                    b.Property<int>("TipoImovelId")
                         .HasColumnType("int");
 
                     b.Property<string>("UF")
@@ -122,6 +128,8 @@ namespace LocadoraDeImoveis.Migrations
                         .HasColumnType("float");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("TipoImovelId");
 
                     b.ToTable("Imoveis");
                 });
@@ -181,6 +189,36 @@ namespace LocadoraDeImoveis.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TipoImovel");
+                });
+
+            modelBuilder.Entity("LocadoraDeImoveis.Models.Contrato", b =>
+                {
+                    b.HasOne("LocadoraDeImoveis.Models.Corretor", "Corretor")
+                        .WithMany()
+                        .HasForeignKey("CorretorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("LocadoraDeImoveis.Models.Imovel", "Imovel")
+                        .WithMany()
+                        .HasForeignKey("ImovelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("LocadoraDeImoveis.Models.Locatario", "Locatario")
+                        .WithMany()
+                        .HasForeignKey("LocatarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("LocadoraDeImoveis.Models.Imovel", b =>
+                {
+                    b.HasOne("LocadoraDeImoveis.Models.TipoImovel", "TipoImovel")
+                        .WithMany()
+                        .HasForeignKey("TipoImovelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

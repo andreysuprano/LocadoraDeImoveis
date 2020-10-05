@@ -47,13 +47,16 @@ namespace LocadoraDeImoveis.Views
                 itens.Add(new Contrato()
                 {
                     Id = contrato.Id,
-                    IdLocatario = contrato.IdLocatario,
-                    IdCorretor = contrato.IdCorretor,
-                    IdImovel = contrato.IdImovel,
+                    LocatarioId = contrato.LocatarioId,
+                    CorretorId = contrato.CorretorId,
+                    ImovelId = contrato.ImovelId,
                     ComissaoCorretor = contrato.ComissaoCorretor,
                     CriadoEm = contrato.CriadoEm,
                     DataVencimento = contrato.DataVencimento,
-                    ValorAluguel = contrato.ValorAluguel
+                    ValorAluguel = contrato.ValorAluguel,
+                    Imovel = contrato.Imovel,
+                    Corretor = contrato.Corretor,
+                    Locatario = contrato.Locatario
                 });
             }
             dtaContratos.Items.Refresh();
@@ -81,10 +84,13 @@ namespace LocadoraDeImoveis.Views
                     ComissaoCorretor = contrato.ComissaoCorretor,
                     CriadoEm = contrato.CriadoEm,
                     DataVencimento = contrato.DataVencimento,
-                    IdCorretor = contrato.IdCorretor,
-                    IdImovel = contrato.IdImovel,
-                    IdLocatario = contrato.IdLocatario,
-                    ValorAluguel = contrato.ValorAluguel
+                    CorretorId = contrato.CorretorId,
+                    ImovelId = contrato.ImovelId,
+                    LocatarioId = contrato.LocatarioId,
+                    ValorAluguel = contrato.ValorAluguel,
+                    Imovel = contrato.Imovel,
+                    Corretor = contrato.Corretor,
+                    Locatario = contrato.Locatario
                 });
                 ;
                 dtaContratos.Items.Refresh();

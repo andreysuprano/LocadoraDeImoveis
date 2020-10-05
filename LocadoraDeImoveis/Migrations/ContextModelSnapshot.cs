@@ -29,25 +29,31 @@ namespace LocadoraDeImoveis.Migrations
                     b.Property<double>("ComissaoCorretor")
                         .HasColumnType("float");
 
+                    b.Property<int>("CorretorId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("CriadoEm")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("DataVencimento")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("IdCorretor")
+                    b.Property<int>("ImovelId")
                         .HasColumnType("int");
 
-                    b.Property<int>("IdImovel")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IdLocatario")
+                    b.Property<int>("LocatarioId")
                         .HasColumnType("int");
 
                     b.Property<double>("ValorAluguel")
                         .HasColumnType("float");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CorretorId");
+
+                    b.HasIndex("ImovelId");
+
+                    b.HasIndex("LocatarioId");
 
                     b.ToTable("Contratos");
                 });
@@ -110,7 +116,7 @@ namespace LocadoraDeImoveis.Migrations
                     b.Property<bool>("Locado")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("TipoImovelId")
+                    b.Property<int>("TipoImovelId")
                         .HasColumnType("int");
 
                     b.Property<string>("UF")
@@ -183,11 +189,34 @@ namespace LocadoraDeImoveis.Migrations
                     b.ToTable("TipoImovel");
                 });
 
+            modelBuilder.Entity("LocadoraDeImoveis.Models.Contrato", b =>
+                {
+                    b.HasOne("LocadoraDeImoveis.Models.Corretor", "Corretor")
+                        .WithMany()
+                        .HasForeignKey("CorretorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("LocadoraDeImoveis.Models.Imovel", "Imovel")
+                        .WithMany()
+                        .HasForeignKey("ImovelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("LocadoraDeImoveis.Models.Locatario", "Locatario")
+                        .WithMany()
+                        .HasForeignKey("LocatarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("LocadoraDeImoveis.Models.Imovel", b =>
                 {
                     b.HasOne("LocadoraDeImoveis.Models.TipoImovel", "TipoImovel")
                         .WithMany()
-                        .HasForeignKey("TipoImovelId");
+                        .HasForeignKey("TipoImovelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

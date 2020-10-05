@@ -45,6 +45,8 @@
                 <materialDesign:DataGridTextColumn Header="Area" Binding="{Binding Area}" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
                 <materialDesign:DataGridTextColumn Header="Cidade" Binding="{Binding Cidade}" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
                 <materialDesign:DataGridTextColumn Header="UF" Binding="{Binding UF}" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
+                <materialDesign:DataGridTextColumn Header="Tipo do Imovel" Binding="{Binding TipoImovel.Descricao}" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
+
             </DataGrid.Columns>
         </DataGrid>
         <Button x:Name="Refresh" Style="{StaticResource MaterialDesignFloatingActionButton}" ToolTip="Atualiza tabela" Panel.ZIndex="999" Margin="823,493,21,51" Click="Refresh_Click" >

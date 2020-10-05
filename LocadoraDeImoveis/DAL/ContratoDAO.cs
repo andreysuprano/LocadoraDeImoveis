@@ -1,4 +1,5 @@
 ﻿using LocadoraDeImoveis.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace LocadoraDeImoveis.DAL
     {
         private static Context _context = SingletonContext.GetInstance();       
         public static Contrato BuscarPorId(int id) =>
-            _context.Contratos.Find(id);
+            _context.Contratos.Include("Imovel").Include("Corretor").Include("Locatario").FirstOrDefault(x => x.Id == id);
 
         public static bool Cadastrar(Contrato Contrato)
         {
@@ -34,8 +35,7 @@ namespace LocadoraDeImoveis.DAL
             return false;
         }
         public static bool Remover(Contrato Contrato)
-        {
-            var Corretor = BuscarPorId(Contrato.Id);
+        {            
             var c = _context.Contratos.Remove(Contrato);
             _context.SaveChanges();
 
@@ -47,6 +47,10 @@ namespace LocadoraDeImoveis.DAL
         }
         public static List<Corretor> FiltrarPorParteNome(string parteNome) =>
             _context.Corretores.Where(x => x.Nome.Contains(parteNome)).ToList();
-        public static List<Contrato> Listar() => _context.Contratos.ToList();
+        public static List<Contrato> Listar() => _context.Contratos
+                                                            .Include("Imovel")
+                                                            .Include("Corretor")
+                                                            .Include("Locatario")
+                                                            .ToList();
     }
 }

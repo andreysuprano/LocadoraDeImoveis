@@ -10,11 +10,19 @@ namespace LocadoraDeImoveis.Utils
     {
         public Cep BuscarCepService(string cep)
         {
-            var client = new RestClient("https://viacep.com.br/");
-            var request = new RestRequest("ws/{cep}/json/", DataFormat.Json)
-                                            .AddUrlSegment("cep", cep);
-            var response = client.Execute(request);
-            var responseConvertida = JsonConvert.DeserializeObject<Cep>(response.Content);
+            Cep responseConvertida;
+            try
+            {
+                var client = new RestClient("https://viacep.com.br/");
+                var request = new RestRequest("ws/{cep}/json/", DataFormat.Json)
+                                                .AddUrlSegment("cep", cep);
+                var response = client.Execute(request);
+                responseConvertida = JsonConvert.DeserializeObject<Cep>(response.Content);
+            }
+            catch(Exception e)
+            {
+                responseConvertida = new Cep();
+            }
             return responseConvertida;
         }
     }

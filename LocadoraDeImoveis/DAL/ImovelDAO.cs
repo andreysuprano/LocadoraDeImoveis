@@ -52,15 +52,19 @@ namespace LocadoraDeImoveis.DAL
             return true;
         }
 
-        public static List<Imovel> Listar() => _context.Imoveis.ToList();
+        public static List<Imovel> Listar()
+        {
+            return _context.Imoveis.Include("TipoImovel").ToList();
+        }
+
         public static List<Imovel> ListarPorFiltro(string filtro)
         {
             switch (filtro)
             {
                 case "disponivel":
-                    return _context.Imoveis.Where(x => x.Locado == false).ToList();
-                case "alugado":
                     return _context.Imoveis.Where(x => x.Locado == true).ToList();
+                case "alugado":
+                    return _context.Imoveis.Where(x => x.Locado == false).ToList();
                 default:
                     return new List<Imovel>();
             }

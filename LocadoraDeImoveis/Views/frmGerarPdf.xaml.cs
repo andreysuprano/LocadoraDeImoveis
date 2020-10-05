@@ -27,12 +27,9 @@ namespace LocadoraDeImoveis.Views
         private void BrnGerarPdf_Click(object sender, RoutedEventArgs e)
         {
             if (ContratoDAO.BuscarPorId(Convert.ToInt32(IdContrato.Text)) != null){
-                var contrato = ContratoDAO.BuscarPorId(Convert.ToInt32(IdContrato.Text));
-                var corretor = CorretorDAO.BuscarPorId(contrato.IdCorretor);
-                var imovel = ImovelDAO.BuscarPorId(contrato.IdImovel);                
-                var locatario = LocatarioDAO.BuscarPorId(contrato.IdLocatario);
+                var contrato = ContratoDAO.BuscarPorId(Convert.ToInt32(IdContrato.Text));                
                 
-                GeradorDeCpfUtils.GetPdf(contrato, corretor, imovel, locatario);
+                GeradorDeCpfUtils.GetPdf(contrato);
             }
             else
             {
