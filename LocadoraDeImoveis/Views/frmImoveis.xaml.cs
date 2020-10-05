@@ -76,12 +76,14 @@ namespace LocadoraDeImoveis.Views
             {
                 itens.Clear();
                 itens = ImovelDAO.ListarPorFiltro("disponivel");
+                dtaImovel.ItemsSource = itens;
                 dtaImovel.Items.Refresh();
             }
             else if(Convert.ToBoolean(filtroAlugado.IsChecked))
             {
                 itens.Clear();
                 itens = ImovelDAO.ListarPorFiltro("alugado");
+                dtaImovel.ItemsSource = itens;
                 dtaImovel.Items.Refresh();
             }
             else
